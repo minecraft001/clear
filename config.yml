@@ -1,119 +1,119 @@
 #################################
-#####       语言配置        #####
+#####       Language        #####
 #################################
-#使用的语言文件
-language: "language_cn.yml"
+#Language File
+language: "language_en.yml"
 #################################
-#####       权限配置        #####
+#####      Permission       #####
 #################################
-#使用命令/clear的权限
+#Permission to use command /clear
 per_clear: "per.clear"
 #################################
-#####       TPS配置         #####
+#####         TPS           #####
 #################################
 tps:
-  checkInterval: 80         #检测间隔,单位秒
-  broadcast: true           #tps改变时是否全服提示
-  levels:                   #注:tps在0.0-20.0之间.比如默认设置表示tps在17.5到20.0之间时为非常好,12.0-17.5之间时为良好,0.0-12.0之间时为很差
+  checkInterval: 80         #detect interval,unit is second
+  broadcast: true           #whether broadcast to server when tps change
+  levels:                   #Note:tps is between 0.0 to 20.0.By default for example,17.5-20.0 tps is good,12.0-17.5 tps is fine,0.0-12.0 tps is bad
     good:
       threshold: 17.5
-      status: "&a非常好"
-      show: "&2(说明:此状态下如果你仍然感觉卡可能是与服务器&c网络连接不好&2或周围&c建筑较多&2或你的电脑&c配置较差&2)"
+      status: "&aGood"
+      show: "&2(Tip: Good tps!)"
     fine:
       threshold: 12.0
-      status: "&6良好"
-      show: "&2(说明:此状态下请不要使用&c红石&2,不要过量&c养殖&2动物及其它相关操作)"
+      status: "&6Fine"
+      show: "&2(Tip: Fine tps!)"
     bad:
-      status: "&c很差"
-      show: "&2(说明:此状态说明&c玩家比较多&2或&c动物太多&2或有人使用&c高频红石&2或放置&c大面积流水岩浆&2或&c其它情况&2)"
-    unknown:                #未知状态一般出现在服务器刚开启时
-      status: "&7未知"
-      show: "&2(说明:未知状态)"
+      status: "&cBad"
+      show: "&2(Tip: Bad tps!)"
+    unknown:                #it usually occur when server is just started
+      status: "&7Unknown"
+      show: "&2(Tip: unknown tps!)"
 #################################
-#####       红石限制        #####
+#####       Redstone        #####
 #################################
 redstone:
-  ignoreWorlds:            #哪些世界不进行检测(大小写敏感)
+  ignoreWorlds:            #worlds don't detect(case sensitive)
     - 
-  checkInterval: 100       #计时周期,单位秒
-  gridSize: 20             #以多少格分区检测
-  drop: true               #true表示掉落,false表示清除(消失)
-  removeBlocks:            #哪些ID的方块进行移除,注意:红石火把不要加上,有bug!(比如清除红石线是比较适合的,但清除按钮,活塞等可能让玩家感觉不好)
+  checkInterval: 100       #detect interval,unit is second
+  gridSize: 20             #grid size
+  drop: true               #true=block drop,false=block disappear
+  removeBlocks:            #blocks need to be remove,Warning:Don't add the id of redtorch(It has bug)!
     - 55
-  reset: false             #每次移除方块后是否重置计数器
+  reset: false             #whether to reset the counter when a block is removed
   times:
-    good:                  #服务器状态为十分好(或未知)时
-      tipTimes: 90         #每秒红石事件上限,超过时提示,下同
-      removeTimes: 120     #每秒红石事件上限,超过时提示+移除方块,然后检测重新计数,下同
-    fine:                  #服务器状态为良好时
+    good:                  #When tps is good
+      tipTimes: 90         #Max events per second,reach=broadcast
+      removeTimes: 120     #Max events per second,reach=broadcast + remove(and reset the counter)
+    fine:                  #When tps is fine
       tipTimes: 60
       removeTimes: 100
-    bad:                   #服务器状态为很差时
+    bad:                   #When tps is bad
       tipTimes: 45
       removeTimes: 80
-    unknown:               #服务器状态为未知时
+    unknown:               #When tps is unknown
       tipTimes: 90
       removeTimes: 120
   tip:
-    ingame: false          #游戏内提示
-    ingameTipMinInterval: 5000 #游戏内提示的最小间隔,防刷屏,单位毫秒,0表示无间隔
-    console: true          #控制台提示
-    consoleTipMinInterval: 500 #控制台提示的最小间隔,防刷屏,单位毫秒,0表示无间隔
+    ingame: false          #whether show in game
+    ingameTipMinInterval: 5000 #min interval between two tips(to avoid spam,0 means no limit)
+    console: true          #whether show in console
+    consoleTipMinInterval: 500
 #################################
-#####       作物限制        #####
+#####         Crop          #####
 #################################
-#包括(小麦,胡萝卜,马铃薯,甘蔗,仙人掌,西瓜,南瓜)生长事件与蘑菇蔓延事件
-crop:                      #作物限制
-  ignoreWorlds:            #哪些世界不进行检测(大小写敏感)
+#include the event of crop grow and mushroom spread
+crop:
+  ignoreWorlds:            #worlds don't detect(case sensitive)
     - 
-  checkInterval: 20        #检测周期,单位秒
-  gridSize: 30             #以多少格分区检测
-  max: 18                  #周期内作物事件计数上限
-  drop: true               #true表示掉落,false表示清除(消失)
-  reset: false             #每次移除方块后是否重置计数器
+  checkInterval: 20        #detect interval,unit is second
+  gridSize: 30             #grid size
+  max: 18                  #Max events in a Cycle
+  drop: true               #true=block drop,false=block disappear
+  reset: false             #whether to reset the counter when a block is removed
   tip:
-    ingame: false          #游戏内提示
-    ingameTipMinInterval: 5000 #游戏内提示的最小间隔,防刷屏,单位毫秒,0表示无间隔
-    console: true          #控制台提示
-    consoleTipMinInterval: 500 #控制台提示的最小间隔,防刷屏,单位毫秒,0表示无间隔
+    ingame: false
+    ingameTipMinInterval: 5000
+    console: true
+    consoleTipMinInterval: 500
 #################################
 #####    自动与手动清理     #####
 #################################
 clear:
-  ignoreWorlds:            #哪些世界不进行检测(大小写敏感)
+  ignoreWorlds:            #worlds don't detect(case sensitive)
     - 
-  checkInterval: 300       #检测间隔,单位秒
-  startClearEntitys: 1000  #自动清理检测时,如果服务器实体数量没有达到这个值,则取消清理
+  checkInterval: 300       #detect interval,unit is second
+  startClearEntitys: 1000  #the threshold of the amount of entities to start auto-clear
   clear:
-    good:                  #服务器状态为非常好时,清理等级0
-      show: "无"
+    good:                  #When tps is good,clear level:0
+      show: "None"
       entity: false
       monster: false
       animal: false
-    fine:                  #服务器状态为良好时,清理等级1
-      show: "低级"
+    fine:                  #When tps is fine,clear level:1
+      show: "Low"
       entity: true
       monster: true
       animal: false
-    bad:                   #服务器状态为很差时,清理等级2
-      show: "高级"
+    bad:                   #When tps is bad,clear level:2
+      show: "High"
       entity: true
       monster: true
       animal: true
-    unknown:               #服务器状态为未知时,清理等级3
-      show: "无"
+    unknown:               #When tps is unknown,clear level:3
+      show: "None"
       entity: false
       monster: false
       animal: false
-  entity:                  #清除实体
-    clear:                 #直接清除的实体列表(实体ID为1表示掉落物,不要写上)
+  entity:                  #Clear entities
+    clear:                 #entities to clear(Warning:Don't add id 1)
       - 2
       - 10
       - 11
       - 12
       - 20
       - 22
-    remainDropItems:       #不清除的掉落物品的id列表(比如那些贵重的掉落物不应该被清除)
+    remainDropItems:       #the item-ids of drop-item,they won't be cleared(For example,A diamond is precious,so it shouldn't be cleared)
       - 256
       - 257
       - 258
@@ -178,8 +178,8 @@ clear:
       - 397
       - 399
       - 403
-  monster:                   #清除怪物
-    clear:                   #需要清除的怪物ID列表
+  monster:                   #Clear Monsters
+    clear:                   #the entity-id of monsters that should be cleared
       - 50
       - 51
       - 52
@@ -190,16 +190,16 @@ clear:
       - 60
       - 61
       - 66
-  animal:                    #清理动物
-    gridSize: 30             #以多少格分区检测
-    maxPerGrid: 20           #动物每区允许的数量
-    animalEggChance: 40      #0-100,每个被清除的动物变成相应动物蛋的机率
-    clearTypes:              #需要清除的动物实体ID列表
+  animal:                    #Clear Animals
+    gridSize: 30             #grid size
+    maxPerGrid: 20           #Max amount in a grid
+    animalEggChance: 40      #0-100,the chance of convert cleared animals to corresponding eggs 
+    clearTypes:              #the entity-id of animals that should be cleared
       - 90
       - 91
       - 92
       - 93
-    airBlocks:               #检测方块时被当作空气的方块ID列表,在自动生成箱子时用到,这些方块会被当作空气
+    airBlocks:               #when check generate chest,these blocks will be regard as air
       - 0
       - 17
       - 18

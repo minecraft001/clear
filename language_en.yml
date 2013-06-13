@@ -1,0 +1,40 @@
+#tip
+#'/&'will be convert to'&'
+#'&'will be convert to'/u00A7'
+#'\n 'will be convert to'\n'
+
+#plain language
+lang_5: "Enable Failed!Plugin needed: lib."
+lang_10: "clear Tip"
+lang_15: "/clear <reloadConfig/rc>"
+lang_20: "Reload the config."
+lang_25: "Reload config success."
+lang_30: "Reload config fail."
+lang_190: "Digit format error."
+lang_1200: ">>Current entities:"
+lang_1205: "Auto starting clear..."
+lang_1210: "Result:"
+lang_1215: "/clear info"
+lang_1220: "Show the server entities infomation."
+lang_1225: "/clear start [0-3]"
+lang_1230: "Force clear.&7-Param can specify level."
+lang_1295: "&3Clearing Entities:"
+lang_1305: "&3Clearing Monsters:"
+lang_1310: "&3Clearing Animals:"
+lang_1885: "vanish"
+lang_1886: "drop"
+lang_1890: "&aOn"
+lang_1891: "&5Off"
+
+#format language
+lang-665: "broadcastInfo:&3EntityType:&d{0} &3Amount:&d{1}"
+lang-670: "clearInfo:&3EntityType:&d{0} &3Amount:&d{1}&3-->&d{2}"
+lang-673: "clearInfo4:&3EntityType:&d{0} &3Amount:&d{1}&4-->&d{2}"
+lang-675: "clearInfo2:&9Total:&6{0}"
+lang-680: "clearInfo3:&9Total:&6{0}&9-->&6{1}"
+lang-690: "tpsChange:&3Tip:&9TPS change:{0}&9-->{1}"
+lang-705: "redStoneTip:&cRedstone Detect:&3Abnormal near&d({0},{1},{2},{3})&3!"
+lang-708: "redStoneTip2:&cRedstone Detect:&3Serious abnormal near&d({0},{1},{2},{3})&3!"
+lang-710: "redStoneTip3:&cRedstone Detect:&3Serious abnormal near&d({0},{1},{2},{3})&3!&d{4}&3!"
+lang-712: "cropTip:&cCrop detect:&3Too many crops near&d({0},{1},{2},{3})&3!&d{4}&3!"
+lang-720: "clearLevel:&3Clear level:&5{0}"

@@ -1,4 +1,4 @@
-package clear;
+package com.minecraft001;
 
 import java.io.File;
 import java.util.regex.Pattern;

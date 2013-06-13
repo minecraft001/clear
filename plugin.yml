@@ -1,5 +1,5 @@
 name: clear
-main: clear.Main
+main: com.minecraft001.Main
 version: 1.0
 softdepend: [lib]
 commands:

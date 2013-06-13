@@ -1,4 +1,4 @@
-package clear;
+package com.minecraft001;
 import lib.Format;
 import lib.HashList;
 import lib.HashListImpl;
